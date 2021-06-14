@@ -1,0 +1,18 @@
+extends layout
+
+block mainbody
+  form(action="register", method="post")
+    .login 
+        .item
+            p account
+            input(type="text", name="account")
+        .item
+            p password
+            input(type="password", name="password")
+        button(type="submit") submit
+    br
+    hr
+    h2 Sign Up
+    p nickname
+    input(type="text", name="nickname")
+    

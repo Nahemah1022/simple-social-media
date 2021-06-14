@@ -1,0 +1,58 @@
+extends layout
+
+block mainbody
+    h2 New Post
+    form(action="post/new", method="post")
+        .login 
+            .item
+                p account
+                input(type="text", name="account")
+            .item
+                p password
+                input(type="password", name="password")
+        p content
+        textarea(name="content", cols="30", rows="10")
+        button(type="submit") submit
+    br
+    hr
+    br
+    h2 Recent Posts
+    each item in post
+        .post
+            .title
+                b.author
+                    span 作者：
+                    span=item.author.nickname
+                form.login(action="friend/add", method="post")
+                    .item 以此身份加好友：
+                        input(type="hidden", name="target", value=item.author.u_id)
+                    .item
+                        span account：
+                        input(type="text", name="account")
+                    .item
+                        span password：
+                        input(type="password", name="password")
+                    .item
+                        button.add(type="submit")
+                            .icon &plus;
+                form(action="post/delete", method="post")
+                    button(type="submit", name=item.post_id) X
+            div.content=item.content
+            hr
+            each cmt in item.comment
+                p.comment
+                    span=cmt.author.nickname
+                    span 留言：
+                    span=cmt.content
+            form.comment_below(action="post/comment", method="post")
+                textarea(name="post_"+item.post_id, cols="10", rows="10")
+                div.login 
+                    .item 以此身份留言：
+                    .item
+                        span account：
+                        input(type="text", name="account")
+                    .item
+                        span password：
+                        input(type="password", name="password")
+                    .item
+                        button(type="submit") comment

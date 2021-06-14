@@ -1,0 +1,13 @@
+extends layout
+
+block mainbody
+  h3=title
+  table
+    thead
+      each key in menu
+        td=key
+    tbody
+      each row in result
+        tr
+          each item in row
+            td=item

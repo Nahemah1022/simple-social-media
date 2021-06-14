@@ -1,0 +1,35 @@
+extends layout
+
+block mainbody
+    form.form(action="/friend/list", method="post")
+        .login 
+            .item
+                p account
+                input(type="text", name="account")
+            .item
+                p password
+                input(type="password", name="password")
+            button(type="submit") submit
+    br
+    hr
+    h2 Friend List
+    .friend
+        .fiendlist
+            each friend in friends
+                .listitem
+                    form(action="/friend/chatroom", method="get")
+                        input(type="hidden", name="friend_"+friend.u_id, value=me.u_id)
+                        button(type="submit")=friend.nickname
+                    form(action="/friend/block", method="post")
+                        input(type="hidden", name="friend_"+friend.u_id, value=me.u_id)
+                        button(type="submit") X
+        .chatroom
+            .messages
+                each m in msgs
+                    p=m.nickname + "：" + m.content
+            form.textinput(action="/friend/send", method="post")
+                input(type="text", name=me.u_id+"_"+target)
+                button(type="submit") send
+
+
+    

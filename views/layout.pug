@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title=pagetitle
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    //- script(src="/javascripts/event.js")
+    link(rel="stylesheet", href="/stylesheets/style.css")
+  body
+    #container
+      #header
+        a(href="/")
+          h1.logo Simple Social Media App
+        .headspace
+        h1.menubutton(onclick="menuToggle('show')") &#9776;
+        h1.placeholder &#9776;
+        h2.navitem
+          a(href="/user/signup")
+            .clickable-area Sign up
+      #panel.left
+        section#sections
+          a.sectionlink(href="/post")
+            p New Posts
+          a.sectionlink(href="/friend")
+            p Friend List
+          a.sectionlink(href="/user")
+            p Profile
+      #mainbody
+        section
+          block mainbody
+      form#footer(action="/query", method="get")
+        p your query：
+        input.query(type="text", name="query")
+        button(type="submit") query
+        

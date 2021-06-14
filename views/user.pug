@@ -1,0 +1,24 @@
+extends layout
+
+block mainbody
+  form(action="/user/profile", method="get")
+    .login 
+      .item
+        p account
+        input(type="text", name="account")
+      .item
+        p password
+        input(type="password", name="password")
+      button(type="submit") submit
+  br
+  hr
+  h2 Profile
+  p="nickname: "+nickname
+  form(action="/user/update", method="post")
+    input(type="text", name="nickname_" + u_id)
+    button(type="submit") update
+  p="total post count: "+post_cnt
+  p="average post comments: "+cmt_cnt
+  p="maximum post comments: "+max_cmt
+  p="minimum post comments: "+min_cmt
+    
