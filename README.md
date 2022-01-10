@@ -25,7 +25,7 @@ npm install
 ### Start
 
 ```
-DEBUG=dbms-final:* npm start
+npm start
 ```
 
 ---
